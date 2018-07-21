@@ -38,7 +38,18 @@ Match Group tunnel_group
    ForceCommand echo 'This account can only be used for Remote Network Connection Socks Proxy Gateway and has be restricted accordingly'
 
 ########################################################
+# modify sshd_config
+########################################################
+	[...]
+Port 22
+Port 53
+Port 80
+Port 443
+	[...]
+
+sudo service ssh restart
+
+########################################################
 # connect
 ########################################################
-ssh <Remote Network Connection Socks Proxy Gateway> -l tunnel_user -i <private_key> -D localhost:12345
-
+ssh <Remote Network Connection Socks Proxy Gateway> -p <22, 53, 80, 443> -l tunnel_user -i <private_key> -D localhost:12345
